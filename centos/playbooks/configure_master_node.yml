@@ -17,7 +17,7 @@
 
   - name: Storing Logs and Generated token for future purpose.
     local_action: copy content={{ output.stdout }} dest={{ token_file }}
-    sudo: False
+    sudo: False 
 
   - name: Copying required files
     shell: |
