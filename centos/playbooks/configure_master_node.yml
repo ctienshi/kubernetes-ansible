@@ -1,5 +1,6 @@
 ---
 - hosts: kubernetes-master-nodes
+  become: yes
   vars_files:
   - env_variables
   tasks:
@@ -15,7 +16,8 @@
     register: output
 
   - name: Storing Logs and Generated token for future purpose.
-    local_action: copy content={{ output.stdout }} dest=/home/centos/{{ token_file }}
+    local_action: copy content={{ output.stdout }} dest={{ token_file }}
+    sudo: False
 
   - name: Copying required files
     shell: |
