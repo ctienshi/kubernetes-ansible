@@ -1,6 +1,4 @@
 # Kubernetes Cluster using Ansible
-* This repo is the fork of https://github.com/ctienshi/kubernetes-ansible repository with some modifications.
-
 * Clone repository.
 * Create multiple centos8 servers. One master and many worker. Use vagrant like [here](https://github.com/edib/many_vagrant_machines)
 * Change the “ad_addr” in the env_variables file with the IP address of the Kubernetes master node.
