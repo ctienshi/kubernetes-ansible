@@ -10,7 +10,7 @@
   - name: Commenting Swap entries in /etc/fstab
     replace:
      path: /etc/fstab
-     regexp: '(.*swap*)'
-     replace: '#\1'
+     regexp: '(^/.*swap*)'
+     replace: '# \1'
 
   
