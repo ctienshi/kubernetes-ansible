@@ -1,5 +1,5 @@
 ad_addr: 10.11.12.2
-cidr_v: 172.16.0.0/16
+cidr_v: 10.244.0.0/16
 
 packages:
 - kubeadm
@@ -10,8 +10,20 @@ services:
 - kubelet
 - firewalld
 
-ports:
+# Based on https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#check-required-ports
+# and https://coreos.com/flannel/docs/latest/troubleshooting.html (Firewalls section)
+master_ports:
 - "6443/tcp"
+- "2379-2380/tcp"
+- "10250-10252/tcp"
+- "8285/udp"
+- "8472/udp"
+
+worker_ports:
 - "10250/tcp"
+- "8285/udp"
+- "8472/udp"
+- "30000-32767/tcp"
+
 
 token_file: join_token
