@@ -31,9 +31,8 @@
 
   - name: Installing required packages
     yum:
-     name: "{{ item }}"
+     name: "{{ packages }}"
      state: present
-    with_items: "{{ packages }}"
 
   - name: Starting and Enabling the required services
     service:
@@ -48,7 +47,7 @@
      state: enabled
      permanent: yes
      immediate: yes
-    with_items: "{{ ports }}"
+    with_items: "{{ master_ports if ('kubernetes-master-nodes' in group_names) else worker_ports }}"
 
   - name: Enabling Bridge Firewall Rule
     shell: "echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables"
