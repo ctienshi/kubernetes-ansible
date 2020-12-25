@@ -31,9 +31,10 @@
 
   - name: Installing required packages
     yum:
-     name: "{{ item }}"
      state: present
-    with_items: "{{ packages }}"
+     name:
+      - kubeadm
+      - kubectl
 
   - name: Starting and Enabling the required services
     service:
