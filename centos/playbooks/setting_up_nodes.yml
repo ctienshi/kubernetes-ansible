@@ -33,6 +33,7 @@
     yum:
      state: present
      name:
+      - iproute-tc
       - kubeadm
       - kubectl
 
