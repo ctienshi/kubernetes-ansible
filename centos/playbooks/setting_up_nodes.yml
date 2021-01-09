@@ -49,5 +49,12 @@
      immediate: yes
     with_items: "{{ master_ports if ('kubernetes-master-nodes' in group_names) else worker_ports }}"
 
+  - name: Allow masquerading in Firewalld
+    ansible.posix.firewalld:
+      masquerade: "yes"
+      state: enabled
+      permanent: yes
+      immediate: yes
+
   - name: Enabling Bridge Firewall Rule
     shell: "echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables"
