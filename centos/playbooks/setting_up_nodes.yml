@@ -42,7 +42,7 @@
     with_items: "{{ services }}"
 
   - name: Allow Network Ports in Firewalld
-    firewalld:
+    ansible.posix.firewalld:
      port: "{{ item }}"
      state: enabled
      permanent: yes
